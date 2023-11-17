@@ -21,6 +21,9 @@ Components used
 * JDBC Source & Sink Connector
 * Debezium Postgres Connector  
 
+
+![components overview](assets/demo01.png)
+
 We will use JDBC Connector and Debezium Postgres Connector to get the data from Postgres to Kafka and back to Postgres.
 Addiotionally using Flink to slightly manipulate the streams before sending them back to Postgres.
 
@@ -45,7 +48,8 @@ ALTER ROLE
 ```
 ### populate some data in the database
 
-examples taken & adapted from https://github.com/morenoh149/postgresDBSamples/blob/master/chinook-1.4/Chinook_PostgreSql_utf8.sql
+examples taken & adapted from   
+https://github.com/morenoh149/postgresDBSamples/blob/master/chinook-1.4/Chinook_PostgreSql_utf8.sql
 
 load with
 ```bash 
@@ -56,6 +60,7 @@ docker exec postgres /bin/sh -c 'psql -U postgres  < /var/lib/postgresql/ddl/cus
 
 Connector will publish data from Customer table to a Kafka topic named pg.jdbc.Customer.
 Check with Control Center to see incoming messages.
+
 
 ```bash
 curl -X PUT \
@@ -78,7 +83,7 @@ curl -X PUT \
 
 ### create debeezium postgres connector
 
-Connector will publish data from ARtist table to a Kafka topic named cdc.public.Artist.
+Connector will publish data from Artist table to a Kafka topic named cdc.public.Artist.
 Check with Control Center to see incoming messages.
 
 ```bash
@@ -179,3 +184,19 @@ curl -X PUT \
 ```
 
 Data will collected from our pg-sink topic and sent to postgres table *pg-sink*.
+
+
+### Links
+
+#### Kafka Connect
+https://docs.confluent.io/kafka-connectors/jdbc/current/source-connector/overview.html#load-the-jdbc-source-connector
+
+https://debezium.io/documentation/reference/1.1/connectors/postgresql.html#postgresql-connector-properties
+
+#### Flink
+https://nightlies.apache.org/flink/flink-docs-release-1.18/
+
+https://nightlies.apache.org/flink/flink-docs-release-1.18/docs/dev/table/sql/create/
+
+https://nightlies.apache.org/flink/flink-docs-release-1.18/docs/connectors/table/formats/overview/
+
