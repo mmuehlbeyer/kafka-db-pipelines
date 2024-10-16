@@ -200,3 +200,7 @@ https://nightlies.apache.org/flink/flink-docs-release-1.18/docs/dev/table/sql/cr
 
 https://nightlies.apache.org/flink/flink-docs-release-1.18/docs/connectors/table/formats/overview/
 
+#### Kafka
+
+
+#### Confluent Platform
