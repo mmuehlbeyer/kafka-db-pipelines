@@ -1,7 +1,6 @@
 ---
 version: '3'
 services:
-
   broker:
     image: confluentinc/cp-server:${CP_VERSION}
     hostname: broker
